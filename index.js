@@ -6,6 +6,7 @@ require('./models/User')
 
 const app = express()
 require('./routes/lookup')(app)
+require('./db_data/import')(app)
 
 mongoose.connect('mongodb://127.0.0.1:27017/db_data', {
   useNewUrlParser: true,
