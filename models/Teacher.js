@@ -3,10 +3,10 @@ const { Schema } = mongoose
 
 const teacherSchema = new Schema(
   {
-    id: String,
-    userId: String,
+    id: Number,
+    userId: Number,
     schoolDistrict: String,
-    students: [String]
+    students: Array
   },
   { collection: 'Teacher' },
 )

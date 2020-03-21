@@ -12,8 +12,11 @@ module.exports = app => {
 
 function importData(fileName) {
   const file = `${__dirname}/${fileName}.csv`
+  let result = false
 
-  csvtojson()
+  csvtojson({
+    checkType: true,
+  })
     .fromFile(file)
     .then(csvData => {
       mongodb.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
@@ -25,15 +28,39 @@ function importData(fileName) {
 
         client
           .db('db_data')
-          .collection(`${fileName}`)
-          .insertMany(csvData, (err, res) => {
-            if (err) throw err
+          .collections()
+          .then(names => {
+            for (const name of names) {
+              if (name.namespace === `db_data.${fileName}`) {
+                console.log('found')
+                return true
+              }
+            }
 
-            console.log(`Inserted: ${res.insertedCount} rows`)
-            client.close()
+            return false
+          })
+          .then(exists => {
+            console.log(exists)
+            if (!exists) {
+              client
+                .db('db_data')
+                .collection(`${fileName}`)
+                .insertMany(csvData, (err, res) => {
+                  if (err) throw err
+
+                  console.log(`Inserted: ${res.insertedCount} rows`)
+                  client.close()
+                })
+            } else {
+              console.log('collection exists, not importing file')
+
+              result = true
+
+              client.close()
+            }
           })
       })
     })
 
-  return `imported ${fileName}`
+  return 'task completed'
 }
