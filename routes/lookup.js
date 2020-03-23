@@ -99,4 +99,10 @@ module.exports = app => {
       res.send(teacher)
     }
   })
+
+  app.get('*', function(req, res) {
+    res.status(404).send({
+      message: `☝️ Ah ah ah! You didn't say the magic word! ☝️`,
+    })
+  })
 }
