@@ -5,7 +5,7 @@ const path = require('path')
 let url = 'mongodb://localhost:27017/'
 
 module.exports = app => {
-  app.get('/import/:fileName', (req, res) => {
+  app.get('/Import/:fileName', (req, res) => {
     res.send(importData(`${req.params.fileName}`))
   })
 }
