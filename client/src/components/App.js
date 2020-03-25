@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Header from './Header'
-
-const Dashboard = () => <h2>Dashboard</h2>
-// const SearchNew = () => <h2>SearchNew</h2>
-// const Landing = () => <h2>Landing</h2>
+import Dashboard from './Dashboard'
+import SearchForm from './SearchForm/SearchForm'
 
 class App extends Component {
   componentDidMount() {
@@ -15,8 +13,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Dashboard />
+        <div>
+          <Header />
+        </div>
+        <div className='container'>
+          <Dashboard />
+          <SearchForm />
+        </div>
       </div>
     )
   }
