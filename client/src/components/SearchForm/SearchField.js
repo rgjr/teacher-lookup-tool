@@ -4,9 +4,13 @@ import React from 'react'
 export default ({ input, label, meta: { error, touched } }) => {
   return (
     <div className='col s4 offset-s1'>
-      <label>{label}</label>
-      <input {...input} />
-      { touched && error }
+      <div>
+        <label>{label}</label>
+        <input {...input} style={{ marginBottom: '5px' }} />
+      </div>
+      <div className='red-text' style={{ marginBottom: '20px' }}>
+        {touched && error}
+      </div>
     </div>
   )
 }

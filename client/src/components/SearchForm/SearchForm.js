@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import SearchField from './SearchField'
+import validateFields from '../../utils/validateFields'
 
 const FIELDS = [
   {
@@ -46,9 +47,8 @@ class SearchForm extends Component {
 function validate(values) {
   const errors = {}
 
-  if (!values.user_id && !values.email) {
-    errors.user_id = 'Please provide a User ID or User Email'
-  }
+  errors.user_id = validateFields('user_id', values.user_id || '')
+  errors.email = validateFields('email', values.email || '')
 
   return errors
 }
