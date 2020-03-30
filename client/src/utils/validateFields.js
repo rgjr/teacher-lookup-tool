@@ -1,5 +1,5 @@
 export default (field, data) => {
-  let error = ''
+  let error = {}
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
   switch (field) {

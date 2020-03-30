@@ -5,8 +5,8 @@
 
 `docker run -d -p 27017-27019:27017-27019 --name mongodb mongo:latest`
 
-### Install
-`npm install`
+### Install Server
+`npm run install-project`
 
 ### Run
 `npm run dev`

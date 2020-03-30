@@ -7,7 +7,10 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-server": "npm install",
+    "install-client": "cd client && npm install",
+    "install-project": "concurrently \"npm run install-server\" \"npm run install-client\""
   },
   "author": "Raul Gutierrez",
   "license": "ISC",
