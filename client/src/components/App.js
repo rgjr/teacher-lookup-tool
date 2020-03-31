@@ -6,7 +6,17 @@ import SearchForm from './SearchForm/SearchForm'
 import TeacherTable from './TeacherTable/TeacherTable'
 
 class App extends Component {
-  state = { showTable: false }
+  constructor(props) {
+    super(props)
+    this.state = {
+      showTable: false,
+    }
+    this.onSearchSubmit = this.onSearchSubmit.bind(this)
+  }
+
+  onSearchSubmit(){
+    this.setState({ showTable: true })
+  }
 
   renderContent() {
     if (this.state.showTable) {
@@ -18,7 +28,7 @@ class App extends Component {
       )
     }
 
-    return <SearchForm onSearchSubmit={() => this.setState({ showTable: true })} />
+    return <SearchForm onSearchSubmit={this.onSearchSubmit} />
   }
 
   componentDidMount() {

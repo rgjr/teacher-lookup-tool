@@ -1,4 +1,9 @@
-import { FETCH_USER } from '../actions/types'
+import { FETCH_USER, USER_ID, EMAIL } from '../actions/types'
+
+export const loadFields = data => ({
+  USER_ID,
+  EMAIL
+})
 
 export default function(state = null, action) {
   switch (action.type) {
