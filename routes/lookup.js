@@ -75,7 +75,7 @@ module.exports = app => {
       })
 
       // Trace result to console
-      console.log(JSON.parse(JSON.stringify(teacher)))
+      //console.log(JSON.parse(JSON.stringify(teacher)))
 
       // Fire promise and respond with result
       res.send(teacher)
@@ -94,7 +94,7 @@ module.exports = app => {
         res.send(e)
       })
 
-      console.log(JSON.parse(JSON.stringify(teacher)))
+      //console.log(JSON.parse(JSON.stringify(teacher)))
 
       res.send(teacher)
     }

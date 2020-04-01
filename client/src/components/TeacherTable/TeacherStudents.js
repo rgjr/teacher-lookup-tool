@@ -1,6 +1,20 @@
 import React from 'react'
 
-export default () => {
+function studentList(students) {
+  return students.map(({ _id, id, first_name, last_name, gender }, index) => {
+    return (
+      <tr key={`${_id}`}>
+        <td key={`id_${id}`}>{id}</td>
+        <td key={`name_${first_name}`}>{`${first_name} ${last_name}`}</td>
+        <td key={`gender_${last_name}_${gender}`}>{gender}</td>
+      </tr>
+    )
+  })
+}
+
+export default ({ data }) => {
+  const students = data.user.students
+
   return (
     <div>
       <table className='striped'>
@@ -12,23 +26,7 @@ export default () => {
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>male</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>male</td>
-          </tr>
-          <tr>
-            <td>Lisa</td>
-            <td>Lollipop</td>
-            <td>female</td>
-          </tr>
-        </tbody>
+        <tbody>{studentList(students)}</tbody>
       </table>
     </div>
   )
